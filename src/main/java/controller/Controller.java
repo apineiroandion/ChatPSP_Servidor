@@ -27,7 +27,7 @@ public class Controller {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Error al conectarse al servidor: " + e.getMessage());;
         }
     }
 
