@@ -18,9 +18,10 @@ public class Controller {
             while (true) {
                 System.out.println("Esperando conexiones");
                 if (users.size() < MAX_USERS) {
-                    Conexion conexion = new Conexion(serverSocket.accept());
+                    Conexion conexion = new Conexion(serverSocket.accept(), this);
                     users.add(conexion);
                     conexion.start();
+                    System.out.println("Usuario conectado al servidor");
                 }else {
                     System.out.println("Sala llena");
                 }
@@ -28,5 +29,10 @@ public class Controller {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public synchronized void removeUser(Conexion conexion) {
+        users.remove(conexion);
+        System.out.println("Usuario desconectado del servidor");
     }
 }
