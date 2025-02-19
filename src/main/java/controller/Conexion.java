@@ -32,7 +32,7 @@ public class Conexion extends Thread {
         try {
             String message;
             while ((message = in.readLine()) != null) {
-                System.out.println("Mensaje recibido: " + message);
+                System.out.println(username + " : " + message);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -42,7 +42,7 @@ public class Conexion extends Thread {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            controller.removeUser(this);
+            controller.removeUser(this, username);
         }
     }
 

@@ -31,8 +31,8 @@ public class Controller {
         }
     }
 
-    public synchronized void removeUser(Conexion conexion) {
+    public synchronized void removeUser(Conexion conexion, String username) {
         users.remove(conexion);
-        System.out.println("Usuario desconectado del servidor");
+        System.out.println("Usuario " + username + " desconectado del servidor");
     }
 }
