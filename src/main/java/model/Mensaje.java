@@ -1,15 +1,17 @@
 package model;
 
+import controller.Conexion;
+
 public class Mensaje {
     private String mensaje;
-    private User user;
+    private Conexion conexion;
 
     public Mensaje() {
     }
 
-    public Mensaje(String mensaje, User user) {
+    public Mensaje(String mensaje, Conexion conexion) {
         this.mensaje = mensaje;
-        this.user = user;
+        this.conexion = conexion;
     }
 
     public String getMensaje() {
@@ -20,11 +22,11 @@ public class Mensaje {
         this.mensaje = mensaje;
     }
 
-    public User getUser() {
-        return user;
+    public Conexion getConexion() {
+        return conexion;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setConexion(Conexion conexion) {
+        this.conexion = conexion;
     }
 }
