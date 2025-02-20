@@ -21,7 +21,7 @@ public class Conexion extends Thread {
             out = new PrintWriter(socket.getOutputStream(), true);
 
             username = in.readLine();
-            System.out.println("Usuario conectado: " + username);
+            System.out.println("Usuario conectado: " + username + ". Hay " + (controller.getUsers().size() + 1) + " usuarios conectados");
         } catch (IOException e) {
             System.out.println("Error al conectar con el servidor (Constructor Conexión): " + e.getMessage());
         }

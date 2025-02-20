@@ -15,6 +15,7 @@ public class Controller {
         try {
             ServerSocket serverSocket = new ServerSocket(5000);
             System.out.println("Servidor iniciado");
+            usuariosConectados();
             while (true) {
                 System.out.println("Esperando conexiones");
                 if (users.size() < MAX_USERS) {
@@ -34,12 +35,21 @@ public class Controller {
     public synchronized void removeUser(Conexion conexion, String username) {
         users.remove(conexion);
         System.out.println("Usuario " + username + " desconectado del servidor");
+        usuariosConectados();
     }
 
     public synchronized void broadcast(String remitente, String mensaje) {
         for (Conexion conexion : users) {
             conexion.sendMessage(remitente, mensaje);
         }
+    }
+
+    public void usuariosConectados() {
+        if (users.size() == 0) {System.out.println("No hay usuarios conectados");}
+    }
+
+    public List<Conexion> getUsers() {
+        return users;
     }
 
 }
