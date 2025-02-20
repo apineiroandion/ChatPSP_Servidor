@@ -30,9 +30,11 @@ public class Conexion extends Thread {
     @Override
     public void run() {
         try {
-            String message;
-            while ((message = in.readLine()) != null) {
-                System.out.println(username + " : " + message);
+            String mensaje;
+            while ((mensaje = in.readLine()) != null) {
+                System.out.println(username + " : " + mensaje);
+                controller.broadcast(username, mensaje);
+
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,6 +47,11 @@ public class Conexion extends Thread {
             controller.removeUser(this, username);
         }
     }
+
+    public void sendMessage(String remitente, String mensaje) {
+        out.println(remitente + " : " + mensaje);
+    }
+
 
     public String getUsername() {
         return username;

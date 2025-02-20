@@ -35,4 +35,11 @@ public class Controller {
         users.remove(conexion);
         System.out.println("Usuario " + username + " desconectado del servidor");
     }
+
+    public synchronized void broadcast(String remitente, String mensaje) {
+        for (Conexion conexion : users) {
+            conexion.sendMessage(remitente, mensaje);
+        }
+    }
+
 }
