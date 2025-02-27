@@ -47,6 +47,8 @@ public class Conexion extends Thread {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            controller.broadcast(username, "se ha desconectado del servidor, hay " + (controller.getUsers().size()-1) + " usuarios conectados");
+            controller.getMensajes().addMensaje(username + " se ha desconectado del servidor, hay " + (controller.getUsers().size()-1) + " usuarios conectados");
             controller.removeUser(this, username);
         }
     }
