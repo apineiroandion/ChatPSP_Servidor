@@ -3,24 +3,16 @@ package model;
 import java.util.ArrayList;
 
 public class Mensajes {
-    private ArrayList<String> mensajes = new ArrayList<>();
+    private final ArrayList<String> MENSAJES = new ArrayList<>();
 
     public Mensajes() {
     }
 
     public void addMensaje(String mensaje) {
-        mensajes.add(mensaje);
+        MENSAJES.add(mensaje);
     }
 
-    public ArrayList<String> getMensajes() {
-        return mensajes;
-    }
-
-    public void setMensajes(ArrayList<String> mensajes) {
-        this.mensajes = mensajes;
-    }
-
-    public void clearMensajes() {
-        mensajes.clear();
+    public ArrayList<String> getMENSAJES() {
+        return MENSAJES;
     }
 }
