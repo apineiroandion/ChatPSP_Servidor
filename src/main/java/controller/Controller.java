@@ -14,7 +14,9 @@ public class Controller {
     }
 
     public void start() {
-        try (ServerSocket serverSocket = new ServerSocket(5000)) {
+
+        try{
+            ServerSocket serverSocket = new ServerSocket(5000);
             System.out.println("Servidor iniciado");
             usuariosConectados();
             while (true) {
