@@ -1,5 +1,7 @@
 package controller;
 
+import model.Mensajes;
+
 import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.List;
 public class Controller {
     private final int MAX_USERS = 10;
     private final List<Conexion> users = new ArrayList<>();
+    private final Mensajes mensajes = new Mensajes();
 
     public Controller() {
     }
@@ -23,6 +26,7 @@ public class Controller {
                     users.add(conexion);
                     conexion.start();
                     System.out.println("Usuario conectado al servidor");
+                    enviarListaMensajes(conexion);
                 }else {
                     System.out.println("Sala llena");
                 }
@@ -44,12 +48,26 @@ public class Controller {
         }
     }
 
+    public synchronized void enviarListaMensajes(Conexion conexion) {
+        for (String mensaje : mensajes.getMensajes()) {
+            conexion.sendMessage("", mensaje);
+        }
+    }
+
     public void usuariosConectados() {
         if (users.size() == 0) {System.out.println("No hay usuarios conectados");}
     }
 
     public List<Conexion> getUsers() {
         return users;
+    }
+
+    public Mensajes getMensajes() {
+        return mensajes;
+    }
+
+    public void setMensaje(String mensaje) {
+        mensajes.addMensaje(mensaje);
     }
 
 }

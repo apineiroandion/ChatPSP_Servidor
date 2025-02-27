@@ -22,6 +22,8 @@ public class Conexion extends Thread {
 
             username = in.readLine();
             System.out.println("Usuario conectado: " + username + ". Hay " + (controller.getUsers().size() + 1) + " usuarios conectados");
+            controller.broadcast(username, "se ha conectado al servidor, hay " + (controller.getUsers().size() + 1) + " usuarios conectados");
+            controller.getMensajes().addMensaje(username + " se ha conectado al servidor, hay " + (controller.getUsers().size() + 1) + " usuarios conectados");
         } catch (IOException e) {
             System.out.println("Error al conectar con el servidor (Constructor Conexión): " + e.getMessage());
         }
@@ -34,6 +36,7 @@ public class Conexion extends Thread {
             while ((mensaje = in.readLine()) != null) {
                 System.out.println(username + " : " + mensaje);
                 controller.broadcast(username, mensaje);
+                controller.getMensajes().addMensaje(username + " : " + mensaje);
 
             }
         } catch (IOException e) {
